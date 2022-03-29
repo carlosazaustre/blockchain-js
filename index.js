@@ -11,6 +11,8 @@ async function run() {
   await blockchain.addBlock(block3);
 
   blockchain.print();
+
+  //await blockchain.chain[0].getBlockData().then(a=>console.log('ok 0',a)).catch(error=>console.error(error))
 }
 
 run();

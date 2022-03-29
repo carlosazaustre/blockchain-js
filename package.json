@@ -10,7 +10,6 @@
   "author": "Carlos Azaustre <cazaustre@gmail.com> (https://youtube.com/carlosazaustre)",
   "license": "MIT",
   "dependencies": {
-    "crypto-js": "^4.1.1",
-    "hex2ascii": "^0.0.3"
+    "crypto-js": "^4.1.1"
   }
 }

@@ -1,11 +1,10 @@
 const SHA256 = require("crypto-js/sha256");
-const hex2ascii = require("hex2ascii");
 
 class Block {
   constructor(data) {
     this.hash = null;
     this.height = 0;
-    this.body = Buffer.from(JSON.stringify(data).toString("hex"));
+    this.body = Buffer.from(JSON.stringify(data), "ascii").toString("hex"); //ascii or utf8
     this.time = 0;
     this.previousBlockHash = null;
   }
@@ -29,10 +28,10 @@ class Block {
     const self = this;
     return new Promise((resolve, reject) => {
       let encodedData = self.body;
-      let decodedData = hex2ascii(encodedData);
+      let decodedData = Buffer.from(JSON.stringify(encodedData), "hex").toString("ascii");
       let dataObject = JSON.parse(decodedData);
 
-      if (dataObject === "Genesis Block") {
+      if (dataObject.data === "Genesis Block") {
         reject(new Error("This is the Genesis Block"));
       }
 
